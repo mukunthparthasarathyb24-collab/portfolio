@@ -646,6 +646,7 @@ addEventListener("resize",()=>live.forEach(o=>o.size()));
 /* ---------- app ---------- */
 ILLO.rover="rover"; ILLO.septisense="log";
 const ICON={
+ phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>',
  mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 7 8.5-7"/></svg>',
  li:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.6h.06c.53-.95 1.84-1.95 3.78-1.95 4.04 0 4.86 2.5 4.86 5.75v5.6h-4v-4.96c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.28-1.96 2.6v5.06h-3.84v-11Z"/></svg>',
  gh:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>',
@@ -654,22 +655,23 @@ const ICON={
 const RESUME="Mukunth_Parthasarathy_Resume.pdf";
 document.querySelectorAll(".rail a").forEach((a,i)=>a.innerHTML=ICON[["mail","li","gh","cv"][i]]);
 const EVENTS=[
-  {t:"Family Feud — E-Cell Edition",y:"2026",role:"Organizer",kind:"org",d:"A team quiz game in the Family Feud format, run by E-Cell. Co-organized as Club Coordinator."},
-  {t:"Research Expo 2026",y:"2026",role:"Organizer",kind:"org",d:"Organized with E-Cell as Club Coordinator."},
-  {t:"IGNITE",y:"2026",role:"Organizer",kind:"org",d:"Organized with E-Cell as Club Coordinator."},
-  {t:"Industry Expo 2026",y:"2026",role:"Organizer",kind:"org",d:"Helped organize as E-Cell Executive Director."},
-  {t:"IPL Auction 2026",y:"2026",role:"Organizer",kind:"org",d:"Helped organize as E-Cell Executive Director."},
-  {t:"Arthashastra",y:"2025–26",role:"Organizer",kind:"org",d:"A stock-market trading challenge. Helped organize as E-Cell Executive Director."},
-  {t:"Sell-Fiesta",y:"2025–26",role:"Organizer",kind:"org",d:"Helped organize as E-Cell Executive Director."},
-  {t:"Abhisarga Fest 2024",y:"2024",role:"Core team",kind:"org",d:"Core organizing team for IIIT Sri City's fest."},
-  {t:"Think India Dakshinapatha Summit 2.0, IIT Madras",y:"Oct 2026",role:"College Coordinator",kind:"part",d:"College coordinator for IIIT Sri City's participation; led our delegation to the two-day summit on deep-tech entrepreneurship at IIT Madras.",
+  {s:"2026-10-30",t:"Family Feud — E-Cell Edition",y:"2026",role:"Organizer",kind:"org",d:"A team quiz game in the Family Feud format, run by E-Cell. Co-organized as Club Coordinator."},
+  {s:"2026-10-28a",t:"Research Expo 2026",y:"2026",role:"Organizer",kind:"org",d:"Organized with E-Cell as Club Coordinator."},
+  {s:"2026-09",t:"IGNITE",y:"2026",role:"Organizer",kind:"org",d:"Organized with E-Cell as Club Coordinator."},
+  {s:"2026-03",t:"Industry Expo 2026",y:"2026",role:"Organizer",kind:"org",d:"Helped organize as E-Cell Executive Director."},
+  {s:"2026-02",t:"IPL Auction 2026",y:"2026",role:"Organizer",kind:"org",d:"Helped organize as E-Cell Executive Director."},
+  {s:"2025-12",t:"Arthashastra",y:"2025–26",role:"Organizer",kind:"org",d:"A stock-market trading challenge. Helped organize as E-Cell Executive Director."},
+  {s:"2025-11",t:"Sell-Fiesta",y:"2025–26",role:"Organizer",kind:"org",d:"Helped organize as E-Cell Executive Director."},
+  {s:"2024-10",t:"Abhisarga Fest 2024",y:"2024",role:"Core team",kind:"org",d:"Core organizing team for IIIT Sri City's fest."},
+  {s:"2026-10-10",t:"Think India Dakshinapatha Summit 2.0, IIT Madras",y:"Oct 2026",role:"College Coordinator",kind:"part",d:"College coordinator for IIIT Sri City's participation; led our delegation to the two-day summit on deep-tech entrepreneurship at IIT Madras.",
    imgs:[{src:"assets/summit-2.jpg",cap:"On stage with the summit's speaker, Dr Sridhar Vembu"},{src:"assets/summit-1.jpg",cap:"On stage at the Dakshinapatha Summit 2.0"},{src:"assets/summit-3.jpg",cap:"Delegates at the summit, IIT Madras, 10–11 October 2026"},{src:"assets/summit-5.jpg",cap:"Our team at IIT Madras"},{src:"assets/summit-4.jpg",cap:"The IIIT Sri City delegation on the way"}]},
-  {t:"TEDx Elliot's Beach",y:"2025",role:"Volunteer",kind:"part",d:"Volunteered from June to August 2025."},
-  {t:"National Entrepreneurship Challenge",y:"2026",role:"Finalist",kind:"part",d:"Led E-Cell IIIT Sri City to the national final round at IIT Bombay, top 120 nationally."},
-  {t:"Utkrista 2026 Connect & Sync",y:"2026",role:"1st place",kind:"part",d:"Two-round hardware hackathon, team of 4: the rover, then SeptiSense."},
-  {t:"Utkrista 2026 Research Expo",y:"2026",role:"Presenter",kind:"part",d:"Presented my Honors research poster and received an Honorable Mention.",
+  {s:"2025-06",t:"TEDx Elliot's Beach",y:"2025",role:"Volunteer",kind:"part",d:"Volunteered from June to August 2025."},
+  {s:"2026-08",t:"National Entrepreneurship Challenge",y:"2026",role:"Finalist",kind:"part",d:"Led E-Cell IIIT Sri City to the national final round at IIT Bombay, top 120 nationally."},
+  {s:"2026-11-01",t:"Utkrista 2026 Connect & Sync",y:"2026",role:"1st place",kind:"part",d:"Two-round hardware hackathon, team of 4: the rover, then SeptiSense."},
+  {s:"2026-10-28b",t:"Utkrista 2026 Research Expo",y:"2026",role:"Presenter",kind:"part",d:"Presented my Honors research poster and received an Honorable Mention.",
    imgs:[{src:"assets/poster-2.jpg",cap:"Walking visitors through the results"},{src:"assets/poster-1.jpg",cap:"With my poster at the Utkrista 2026 Research Expo"}]}
 ];
+EVENTS.sort((p,q)=>q.s.localeCompare(p.s));
 const HERO_PHOTO = ""; // set to "photo.jpg" once the portrait is added
 const view=document.getElementById("view"), page=document.getElementById("page"), pageInner=document.getElementById("pageInner");
 const lines=(arr,cls="")=>arr.map(([t,o])=>`<span class="ln ${o?"out":""}"><span>${t}</span></span>`).join("");
@@ -698,6 +700,7 @@ function home(){
       <a class="btn primary mag" href="${RESUME}" download>Download resume ${ICON.down}</a>
       <a class="btn mag" href="#research">See my work</a>
       <a class="icon mag" href="mailto:mukunth2310@gmail.com" aria-label="Email">${ICON.mail}</a>
+      <a class="icon mag" href="tel:+918015522306" aria-label="Call +91 80155 22306" title="+91 80155 22306">${ICON.phone}</a>
       <a class="icon mag" href="https://linkedin.com/in/mukunth-parthasarathy" target="_blank" rel="noopener" aria-label="LinkedIn">${ICON.li}</a>
       <a class="icon mag" href="https://github.com/mukunthparthasarathyb24-collab" target="_blank" rel="noopener" aria-label="GitHub">${ICON.gh}</a>
     </div>
@@ -787,12 +790,13 @@ function home(){
     <a class="big" href="mailto:mukunth2310@gmail.com">${lines([["Say"],["hello",1]])}</a>
     <div class="links">
       <a class="ul" href="mailto:mukunth2310@gmail.com">mukunth2310@gmail.com</a>
+      <a class="ul" href="tel:+918015522306">+91 80155 22306</a>
       <a class="ul" href="https://linkedin.com/in/mukunth-parthasarathy" target="_blank" rel="noopener">LinkedIn</a>
       <a class="ul" href="https://github.com/mukunthparthasarathyb24-collab" target="_blank" rel="noopener">GitHub</a>
     </div>
     <p style="margin-top:36px"><a class="btn primary mag" href="${RESUME}" download>Download resume ${ICON.down}</a></p>
   </div></section>
-  <footer><span>© 2026 Mukunth Parthasarathy</span><span>Sri City, India</span></footer>`;
+  <footer><span>© 2026 Mukunth Parthasarathy</span><span><a href="tel:+918015522306">+91 80155 22306</a> · Sri City, India</span></footer>`;
   startFlow(); wireRows(); observe(); nameLift(); extras(); wireEvents();
 }
 
