@@ -104,6 +104,11 @@ section.s{padding:clamp(90px,16vh,190px) var(--pad);border-top:1px solid var(--h
 .about{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(30px,6vw,110px);margin-top:clamp(40px,7vh,90px)}
 .about .state{font:400 clamp(2rem,3.6vw,3.6rem)/1.02 var(--display);text-transform:uppercase}
 .about .state em{font-style:normal;color:transparent;-webkit-text-stroke:1px var(--fg)}
+.me{margin:clamp(30px,5vh,56px) 0 0;max-width:340px;aspect-ratio:4/5;overflow:hidden;border-radius:6px;position:relative;border:1px solid var(--hair)}
+.me::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px var(--gold-dim);border-radius:inherit;pointer-events:none}
+.me img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;filter:grayscale(1) contrast(1.08);transition:filter .7s,transform 1.2s var(--ease)}
+.me:hover img{filter:none;transform:scale(1.03)}
+@media (max-width:860px){.me{max-width:260px}}
 .about p{color:#c9c9c6;margin:0 0 1.1em;max-width:40rem}
 .now{margin-top:34px;border-top:1px solid var(--hair)}
 .now div{display:grid;grid-template-columns:9rem 1fr;gap:16px;padding:13px 0;border-bottom:1px solid var(--hair)}
@@ -702,7 +707,7 @@ function home(){
   <section class="s" id="about"><div class="wrap">
     <span class="lbl"><b>01</b> — About</span>
     <div class="about">
-      <div class="state rv">Electronics on one side, flight on the other. <em>Most of my work happens where they meet.</em></div>
+      <div><div class="state rv">Electronics on one side, flight on the other. <em>Most of my work happens where they meet.</em></div><figure class="me rv"><img src="assets/headshot.jpg" alt="Mukunth Parthasarathy" loading="lazy"></figure></div>
       <div class="rv">
         <p>This summer I was a research intern at IIT Madras in the Measurements &amp; Instrumentation Lab under Prof. Boby George, where I designed a bioimpedance spectroscopy prototype for tracking hydration from scratch: a custom current-source PCB, an analog front end and an automated measurement pipeline. I'm drawn to the point where electronics meets the physical world: sensors, instrumentation, embedded systems and things that fly. For my Honors research I'm simulating bat-inspired flapping wings to see whether a stretchy membrane beats a rigid wing, and in the Aerial Robotics Lab we're building an autonomous drone that can navigate disaster zones without GPS. Along the way there's been a hackathon win with a rover and a sepsis-warning wearable, and a few smaller builds.</p>
         <p>Outside the lab, football is my thing. I captain the college team. I also love singing, watching movies and just hanging out with friends. And on campus I'm the Club Coordinator of E-Cell, which mostly means a lot of events and a lot of fun people.</p>
@@ -1025,7 +1030,9 @@ function buddy(){
   function target(sec){
     const W=innerWidth,H=innerHeight,bw=host.offsetWidth,bh=host.offsetHeight;
     if(small()) return [W-bw-8, H-bh-70];
-    if(sec==="about"){const st=document.querySelector(".stats"),sr=st&&st.getBoundingClientRect();
+    if(sec==="about"){const me=document.querySelector(".me"),mr=me&&me.getBoundingClientRect();
+      if(mr&&mr.bottom>120&&mr.top<H){return [Math.min(W*.42,mr.right+40), Math.max(110,Math.min(H-bh-90,mr.top+mr.height*.3))];}
+      const st=document.querySelector(".stats"),sr=st&&st.getBoundingClientRect();
       if(sr&&sr.top<H*.95) return [Math.max(60,.1*W), Math.max(90,Math.min(H-bh-90,sr.top-bh-14))];
       return [Math.max(60,.1*W), Math.min(H-bh-90,.56*H)];}
     const [fx,fy]=spots[sec]||[.84,.25];
